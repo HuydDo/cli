@@ -1,6 +1,10 @@
-require "CLI/version"
+# require "CLI/version"
 
-module CLI
-  class Error < StandardError; end
-  # Your code goes here...
+# module CLI
+#   class Error < StandardError; end
+#   # Your code goes here...
+# end
+
+class CLI
+
 end
