@@ -1,6 +1,3 @@
-
-
-
 class CommandLineInterface
   def run
     
