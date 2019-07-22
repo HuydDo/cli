@@ -1,4 +1,4 @@
-class CommandLineInterface
+class Laptops
   def run
     
   end
