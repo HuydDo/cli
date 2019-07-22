@@ -5,6 +5,10 @@
 #   # Your code goes here...
 # end
 
-class CLI
+# class BestLaptopDeals::CLI
 
+class CLI
+  def run 
+    
+  end
 end
