@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/best_laptop_deals.rb"
-BestLaptopDeals::CLI.new.run
+-----require_relative "../lib/best_laptop_deals.rb"
+
+Top10Laptops::CLI.new.run
 
 ------require_relative "../lib/CLI/cli.rb"
 ------CLI.new.run
