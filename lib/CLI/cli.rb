@@ -1,14 +1,15 @@
-# require "CLI/version"
-
-# module CLI
-#   class Error < StandardError; end
-#   # Your code goes here...
-# end
-
-# class BestLaptopDeals::CLI
-
-class CLI
+class Laptop::CLI
+  
   def run 
+    list_laptops
+    menu
+  end
+  
+  def list_laptops
+  
+  end
+  
+  def menu
     
   end
 end
