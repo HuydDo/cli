@@ -4,8 +4,19 @@ require 'open-uri'
 
   doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   # puts (doc)
+  
     
-  doc.css("#roundup-container .roundup-list-container .roundup-item-row h3").first.text.strip
+  # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3").first.text.strip
+  
+  # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")[0].attributes
+  # puts laptops
+  
+  laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")
+  
+  laptops.each do |laptop|
+    puts laptop.text.strip
+  end
+    
 # class BestLaptops::Scraper
   
 #   def self.scape_index_page
