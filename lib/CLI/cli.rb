@@ -1,15 +1,24 @@
 class BestLaptops::::CLI
   
   def run 
-    list_laptops
+    make_laptops
+    add_attributes
+    display
     menu
   end
   
-  def list_laptops
+  def make_laptops
   
   end
   
-  def menu
+  def add_attribues
     
+  end
+  
+  def menu
+    puts "Welcome to top 10 laptop 2019."
+    Laptop.all.each do |laptop|
+      puts()
+    end
   end
 end

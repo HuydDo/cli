@@ -17,6 +17,7 @@ class BestLaptops::Scraper
   end
   
   def self.scrap_laptop(laptop_url)
+    doc = Nokogiri::HTML (open(laptop_url))
     
   end
 end
