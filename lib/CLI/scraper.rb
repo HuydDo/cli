@@ -1,6 +1,6 @@
 class BestLaptops::Scraper
   
-  def self.scape_index_page(url)
+  def self.scape_index_page
     doc = Nokogiri::HTML(open(https://www.pcmag.com/roundup/255115/the-best-laptops))
     
     laptops = []

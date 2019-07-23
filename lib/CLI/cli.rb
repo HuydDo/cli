@@ -8,7 +8,8 @@ class BestLaptops::CLI
   end
   
   def make_laptops
-  
+    laptops_arr = Scaper.scape_index_page
+    Laptop.create(laptops_arr)
   end
   
   def add_attribues
