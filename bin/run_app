@@ -2,7 +2,7 @@
 
 -----require_relative "../lib/best_laptop_deals.rb"
 
-Top10Laptops::CLI.new.run
+BestLaptops::CLI.new.run
 
 ------require_relative "../lib/CLI/cli.rb"
 ------CLI.new.run

@@ -1,9 +1,11 @@
-class Laptops
+class BestLaptops::Laptop
+  attr_accessor :name, :price, :bottom_line, :url 
+  
   def run
-    
+    self.scape_laptops
   end
   
-  def make
+  def self.scape_laptops
     
   end
   

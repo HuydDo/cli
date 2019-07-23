@@ -1,4 +1,4 @@
-class Laptop::CLI
+class BestLaptops::::CLI
   
   def run 
     list_laptops
