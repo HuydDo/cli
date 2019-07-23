@@ -8,8 +8,9 @@ require 'open-uri'
     
   # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3").first.text.strip
   
-  # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")[0].attributes
-  # puts laptops
+  p doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")[0].attributes
+  
+  
   
   laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")
   
