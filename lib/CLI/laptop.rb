@@ -1,4 +1,5 @@
-class BestLaptops::Laptop
+# class BestLaptops::Laptop
+class Laptop
   attr_accessor :name, :price, :description, :url 
   
   @@all = []
