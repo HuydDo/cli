@@ -8,14 +8,21 @@ require 'open-uri'
     
   # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3").first.text.strip
   
-  p doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")[0].attributes
+  # p doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")[0].attributes
   
   
   
-  laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")
+  laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row")
+  # msrps = doc.css("#roundup-container .roundup-list-container .roundup-item-row .msrp")
   
+  # msrps.each do |msrp|
+  #   puts msrp.text.strip
+  # end
   laptops.each do |laptop|
-    puts laptop.text.strip
+    # puts laptop.text.strip
+    puts laptop.css("h3").text.strip
+    puts laptop.css(".msrp").text.strip
+    
   end
     
 # class BestLaptops::Scraper
