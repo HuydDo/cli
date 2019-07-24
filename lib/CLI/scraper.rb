@@ -1,30 +1,44 @@
+class Scraper
 # require 'pry'
 require 'nokogiri'
 require 'open-uri'
 
-  doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
+  # doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
+  
   # puts (doc)
-  
-    
-  # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3").first.text.strip
-  
+    # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row h3").first.text.strip
   # p doc.css("#roundup-container .roundup-list-container .roundup-item-row h3")[0].attributes
-  
-  
-  
-  laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row")
   # msrps = doc.css("#roundup-container .roundup-list-container .roundup-item-row .msrp")
   
   # msrps.each do |msrp|
   #   puts msrp.text.strip
   # end
-  laptops.each do |laptop|
-    # puts laptop.text.strip
-    puts laptop.css("h3").text.strip
-    puts laptop.css(".msrp").text.strip
+  
+  
+  # laptops = doc.css("#roundup-container .roundup-list-container .roundup-item-row")
+ 
+  # laptops.each do |laptop|
+  #   puts laptop.css("h3").text.strip
+  #   puts laptop.css(".msrp").text.strip
+  # end
     
+  def get_page
+    doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   end
-    
+  
+  def get_laptops
+    self.get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
+  end
+  
+  def make_laptops
+    self.get_laptops.each do |laptop|
+       puts laptop.css("h3").text.strip
+       puts laptop.css(".msrp").text.strip
+    end
+  end
+  
+end
+Scraper.new.make_laptops
 # class BestLaptops::Scraper
   
 #   def self.scape_index_page
