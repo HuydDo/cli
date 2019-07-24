@@ -38,9 +38,7 @@ require_relative './laptop.rb'
        laptop.name = item.css("h3").text.strip
        laptop.price = item.css(".msrp").text.strip
        laptop.description =  item.css(".pros-cons").text.gsub("Bottom Line: ","").strip
-       laptop.url = item.css("a" ).attribute("href").value
-
-
+       laptop.url = item.css("a").attribute("href").value
    
     end
   end
@@ -50,7 +48,7 @@ require_relative './laptop.rb'
     Laptop.all.each do |item|
       if item.name
         puts "Name: #{item.name}"
-        puts "  Price: #{item.price}"
+        puts "  #{item.price}"
         puts "  Description: #{item.description}"
         puts "  Read Review: #{item.url}"
       end
