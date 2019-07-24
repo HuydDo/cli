@@ -1,5 +1,5 @@
 class BestLaptops::Laptop
-  attr_accessor :name, :price, :bottom_line, :url 
+  attr_accessor :name, :price, :description, :url 
   
   @@all = []
   

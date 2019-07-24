@@ -31,13 +31,17 @@ require 'open-uri'
   end
   
   def make_laptops
-    self.get_laptops.each do |laptop|
-       puts laptop.css("h3").text.strip
-       puts laptop.css(".msrp").text.strip
+    self.get_laptops.each do |item|
+       laptop = Laptop.new
+       laptop.name = item.css("h3").text.strip
+       laptop.price = item.css(".msrp").text.strip
+       laptop.description =  item.css(".pros-cons").text.strip
+       laptop.url = item.css(".full-review a")
     end
   end
-  
+
 end
+
 Scraper.new.make_laptops
 # class BestLaptops::Scraper
   
