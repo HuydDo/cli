@@ -32,12 +32,12 @@ class CLI
     end
   end
   
-  # def add_laptop_detail(url)
-  #   Laptop.all.each do |laptop|
-  #     info = Scraper.scrape_laptop_page(laptop.url)
-  #     laptop.add_laptop_info(info)
-  #   end
-  # end
+  def add_laptop_detail
+    Laptop.all.each do |laptop|
+      info = Scraper.scrape_laptop_page(laptop.url)
+      laptop.add_laptop_info(info)
+    end
+  end
   
   def menu
     input = nil

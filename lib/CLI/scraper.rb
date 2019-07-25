@@ -54,32 +54,31 @@ class Scraper
     laptops
   end
   
-  # def self.scrape_laptop_page(laptop_url)
-  
-  def scrape_laptop_page
-    doc = Nokogiri::HTML(open("https://www.pcmag.com/review/365771/dell-xps-13-9380"))
+  def self.scrape_laptop_page(laptop_url)
+    doc = Nokogiri::HTML (open(laptop_url))
+ 
+  # def scrape_laptop_page
+  #   doc = Nokogiri::HTML(open("https://www.pcmag.com/review/365771/dell-xps-13-9380"))
     
     
-    # detail = {}
+    detail = {}
     
     doc.css(".pros-cons-bl").each do |item|
       
-      # puts item.css("li").text.strip
-      detail = Laptop.new
-      
-      detail.pros = item.css("li")[0].text.strip
+      # detail = Laptop.new
+      # detail.pros = item.css("li p")[0].text.strip
       # puts detail.pros
-      
-      detail.cons = item.css("li")[1].text.strip
+      # detail.cons = item.css("li p")[1].text.strip
       # puts detail.cons
-      
-      detail.bottom_line =  item.css("li")[2].text.strip
+      # detail.bottom_line =  item.css("li p")[2].text.strip
       # puts detail.bottom_line
       
       
-      # detail[:pros] = item.css("").text.strip
-      # detail[:cons] = item.css("").text.strip
-      # detail[:bottom_line] = item.css("").text.strip
+      detail[:pros] = item.css("li p")[0].text.strip
+      detail[:cons] = item.css("li p")[1].text.strip
+      detail[:bottom_line] = item.css("li p")[2].text.strip
+      
+      detail
     end
     
   end
@@ -99,15 +98,15 @@ class Scraper
   def print_laptops
     self.scrape_laptop_page
     Laptop.all.each do |item|
-       puts "#{item.pros} "
-       puts "#{item.cons} "
-       puts "#{item.bottom_line} "
+       puts "Pros: #{item.pros} "
+       puts "Cons: #{item.cons} "
+       puts "Bottom Line: #{item.bottom_line} "
     end
   end
   
 end
-# laptop_url ="https://www.pcmag.com/review/363302/lenovo-yoga-c93"
-Scraper.new.print_laptops
+
+# Scraper.new.print_laptops
 
 
   

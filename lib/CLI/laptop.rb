@@ -4,14 +4,14 @@ class Laptop
   
   @@all = []
   
-  # def initialize(laptop_hash)
-  #   laptop_hash.each {|key,value| self.send(("#{key}="), value)}
-  #   @@all << self
-  # end
-  
-   def initialize
+  def initialize(laptop_hash)
+    laptop_hash.each {|key,value| self.send(("#{key}="), value)}
     @@all << self
   end
+  
+  # def initialize
+  #   @@all << self
+  # end
   
   def self.create(laptops_array)
     laptops_array.each do |laptop|
