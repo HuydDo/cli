@@ -15,6 +15,10 @@ class Laptop
     end
   end
   
+  def self.add_laptop_info(attr_hash)
+    attr_hash.each do |key, value| self.send(("#{key}="), value)
+  end
+  
   def self.all
     @@all
   end

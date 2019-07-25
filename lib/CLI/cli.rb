@@ -32,6 +32,13 @@ class CLI
     end
   end
   
+  def add_laptop_detail(ur)
+    Laptop.all.each do |laptop|
+      info = Scraper.scrape_laptop_page(url)
+      laptop.add_laptop_info(info)
+    end
+  end
+  
   def menu
     input = nil
     while input != 'exit'
