@@ -24,18 +24,18 @@ require_relative './laptop.rb'
   #   puts laptop.css(".msrp").text.strip
   # end
     
-  def get_page
+  def self.get_page
     doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   end
   
-  def get_laptops
-    get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
+  def self.get_laptops
+    self.get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
   end
   
-  def make_laptops
+  def self.scrape_laptops
     laptops = []
     
-    get_laptops.each do |item|
+    self.get_laptops.each do |item|
        
       # laptop = Laptop.new
       # laptop.name = item.css("h3").text.strip
@@ -49,12 +49,12 @@ require_relative './laptop.rb'
       laptop[:price] = item.css(".msrp").text.strip
       laptop[:description] =  item.css(".pros-cons").text.gsub("Bottom Line: ","").strip
       laptop[:url] = item.css("a").last["href"]
-   
+      laptops << laptop
     end
   end
 
   def print_laptops
-    make_laptops
+    self.scrape_laptops
     Laptop.all.each do |item|
       if item.name
         puts "Name: #{item.name}"
@@ -67,7 +67,7 @@ require_relative './laptop.rb'
   
 end
 
-Scraper.new.print_laptops
+# Scraper.new.print_laptops
 
 # class BestLaptops::Scraper
   

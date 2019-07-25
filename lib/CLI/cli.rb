@@ -1,4 +1,8 @@
-class BestLaptops::CLI
+require_relative "./scraper.rb"
+require_relative './laptop.rb'
+
+# class BestLaptops::CLI
+class CLI 
   
   def run 
     make_laptops
@@ -7,7 +11,8 @@ class BestLaptops::CLI
   end
   
   def make_laptops
-    laptops_arr = Scaper.scape_index_page
+    laptops_arr = Scraper.scrape_laptops
+    puts laptops_arr
     Laptop.create(laptops_arr)
   end
   
