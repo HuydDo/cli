@@ -1,10 +1,9 @@
-# BestLaptops::Scraper
-class Scraper
-# require 'pry'
+require_relative './laptop.rb'
 require 'nokogiri'
 require 'open-uri'
 
-require_relative './laptop.rb'
+# class BestLaptops::Scraper
+class Scraper
 
   # doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   
