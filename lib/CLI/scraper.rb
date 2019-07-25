@@ -68,13 +68,13 @@ class Scraper
       detail = Laptop.new
       
       detail.pros = item.css("li")[0].text.strip
-      puts detail.pros
+      # puts detail.pros
       
       detail.cons = item.css("li")[1].text.strip
-      puts detail.cons
+      # puts detail.cons
       
       detail.bottom_line =  item.css("li")[2].text.strip
-      puts detail.bottom_line
+      # puts detail.bottom_line
       
       
       # detail[:pros] = item.css("").text.strip
@@ -99,12 +99,9 @@ class Scraper
   def print_laptops
     self.scrape_laptop_page
     Laptop.all.each do |item|
-    puts "all #{item}" 
-      if item.name
-       puts "Pros: #{item.pros} "
-       puts "Cons: #{item.cons} "
-       puts "Bottom Line: #{item.bottomline} "
-      end
+       puts "#{item.pros} "
+       puts "#{item.cons} "
+       puts "#{item.bottom_line} "
     end
   end
   
