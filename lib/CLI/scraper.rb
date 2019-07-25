@@ -54,17 +54,28 @@ class Scraper
     laptops
   end
 
-  def print_laptops
-    self.scrape_laptops
-    Laptop.all.each do |item|
-      if item.name
-        puts "Name: #{item.name}"
-        puts "  #{item.price}"
-        puts "  Description: #{item.description}"
-        puts "  Read Review: #{item.url}"
-      end
+  def self.scrape_laptop_page(laptop_url)
+    doc = Nokogiri::HTML(open(lapto_url))
+    details = []
+    
+    doc.css("").each do |item|
+      detail = {}
+      detail[:pros] = item.css("").text.strip
+      detail[:cons] = item.css("").text.strip
+      detail[:bottom_line] = item.css("").text.strip
     end
   end
+  # def print_laptops
+  #   self.scrape_laptops
+  #   Laptop.all.each do |item|
+  #     if item.name
+  #       puts "Name: #{item.name}"
+  #       puts "  #{item.price}"
+  #       puts "  Description: #{item.description}"
+  #       puts "  Read Review: #{item.url}"
+  #     end
+  #   end
+  # end
   
 end
 
