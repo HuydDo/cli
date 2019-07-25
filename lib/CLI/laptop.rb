@@ -4,31 +4,38 @@ class Laptop
   
   @@all = []
   
-  def initialize
+  def initialize(laptop_hash)
+    student_hash.each {|key,value| self.send(("#{key}="), value)}
       @@all << self
+  end
+  
+  def self.create(laptops_array)
+    laptops_array.each do |laptop|
+      self.new(laptop)
+    end
   end
   
   def self.all
     @@all
   end
   
-  def self.reset_all
-    @all.clear
-  end
+  # def self.reset_all
+  #   @all.clear
+  # end
   
-  def run
-    self.scape_laptops
-  end
+  # def run
+  #   self.scape_laptops
+  # end
   
-  def self.scape_laptops
+  # def self.scape_laptops
     
-  end
+  # end
   
-  def add_attributes
+  # def add_attributes
     
-  end
+  # end
   
-  def display
+  # def display
     
-  end
+  # end
 end

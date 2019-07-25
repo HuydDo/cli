@@ -29,16 +29,26 @@ require_relative './laptop.rb'
   end
   
   def get_laptops
-    self.get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
+    get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
   end
   
   def make_laptops
-    self.get_laptops.each do |item|
-       laptop = Laptop.new
-       laptop.name = item.css("h3").text.strip
-       laptop.price = item.css(".msrp").text.strip
-       laptop.description =  item.css(".pros-cons").text.gsub("Bottom Line: ","").strip
-       laptop.url = item.css("a").attribute("href").value
+    laptops = []
+    
+    get_laptops.each do |item|
+       
+      # laptop = Laptop.new
+      # laptop.name = item.css("h3").text.strip
+      # laptop.price = item.css(".msrp").text.strip
+      # laptop.description =  item.css(".pros-cons").text.gsub("Bottom Line: ","").strip
+      # laptop.url = item.css("a").attribute("href").value
+      
+      
+      laptop = {}
+      laptop[:name] = item.css("h3").text.strip
+      laptop[:price] = item.css(".msrp").text.strip
+      laptop[:description] =  item.css(".pros-cons").text.gsub("Bottom Line: ","").strip
+      laptop[:url] = item.css("a").last["href"]
    
     end
   end
