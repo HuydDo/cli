@@ -12,7 +12,7 @@ class CLI
   
   def make_laptops
     laptops_arr = Scraper.scrape_laptops
-    puts laptops_arr
+    puts laptops_arr[0]
     Laptop.create(laptops_arr)
   end
   
