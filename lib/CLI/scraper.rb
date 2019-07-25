@@ -24,15 +24,15 @@ class Scraper
   #   puts laptop.css(".msrp").text.strip
   # end
     
-  def self.get_page
+  def get_page
     doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   end
   
-  def self.get_laptops
+  def get_laptops
     self.get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
   end
   
-  def self.scrape_laptops
+  def scrape_laptops
     laptops = []
     
     self.get_laptops.each do |item|
@@ -53,23 +53,31 @@ class Scraper
     end
     laptops
   end
-  laptop_url ="https://www.pcmag.com/review/363302/lenovo-yoga-c93"
-  def self.scrape_laptop_page(laptop_url)
-    doc = Nokogiri::HTML(open(lapto_url))
-   
-    detail = {}
+  
+  # def self.scrape_laptop_page(laptop_url)
+  
+  def scrape_laptop_page
+    doc = Nokogiri::HTML(open("https://www.pcmag.com/review/363302/lenovo-yoga-c930"))
+    # detail = {}
     
-    doc.css(".pros-cons-bl li").each do |item|
-     puts "Pros: #{item.css("a").text.strip} "
-     puts "Cons: #{item.css("a").text.strip} "
-     puts "Bottom Line: #{item.css("a").text.strip} "
+    doc.css(".pros-cons-bl").each do |item|
+      
+      puts item.css("li").text.strip
+      detail = Laptop.new
+      detail.pros = item.css("li").text.strip
+      puts detail.pros
+      detail.cons = item.css("strong p").text.strip
+      detail.bottom_line =  item.css("#_description3").text.strip
+      
+      # laptop.url = item.css("a").attribute("href").value
       
       # detail[:pros] = item.css("").text.strip
       # detail[:cons] = item.css("").text.strip
       # detail[:bottom_line] = item.css("").text.strip
     end
-    detail
+    # detail
   end
+  
   # def print_laptops
   #   self.scrape_laptops
   #   Laptop.all.each do |item|
@@ -82,9 +90,21 @@ class Scraper
   #   end
   # end
   
+  def print_laptops
+    self.scrape_laptop_page
+    Laptop.all.each do |item|
+     
+      if item.name
+       puts "Pros: #{item.pros} "
+       puts "Cons: #{item.cons} "
+       puts "Bottom Line: #{item.bottomline} "
+      end
+    end
+  end
+  
 end
-
-Scraper.new.scrape_laptop_page(laptop_url)
+# laptop_url ="https://www.pcmag.com/review/363302/lenovo-yoga-c93"
+Scraper.new.print_laptops
 
 
   
