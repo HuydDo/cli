@@ -24,15 +24,15 @@ class Scraper
   #   puts laptop.css(".msrp").text.strip
   # end
     
-  def get_page
+  def self.get_page
     doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   end
   
-  def get_laptops
+  def self.get_laptops
     self.get_page.css("#roundup-container .roundup-list-container .roundup-item-row")
   end
   
-  def scrape_laptops
+  def self.scrape_laptops
     laptops = []
     
     self.get_laptops.each do |item|
