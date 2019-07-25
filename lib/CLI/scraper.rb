@@ -57,25 +57,31 @@ class Scraper
   # def self.scrape_laptop_page(laptop_url)
   
   def scrape_laptop_page
-    doc = Nokogiri::HTML(open("https://www.pcmag.com/review/363302/lenovo-yoga-c930"))
+    doc = Nokogiri::HTML(open("https://www.pcmag.com/review/365771/dell-xps-13-9380"))
+    
+    
     # detail = {}
     
     doc.css(".pros-cons-bl").each do |item|
       
-      puts item.css("li").text.strip
+      # puts item.css("li").text.strip
       detail = Laptop.new
-      detail.pros = item.css("li").text.strip
-      puts detail.pros
-      detail.cons = item.css("strong p").text.strip
-      detail.bottom_line =  item.css("#_description3").text.strip
       
-      # laptop.url = item.css("a").attribute("href").value
+      detail.pros = item.css("li")[0].text.strip
+      puts detail.pros
+      
+      detail.cons = item.css("li")[1].text.strip
+      puts detail.cons
+      
+      detail.bottom_line =  item.css("li")[2].text.strip
+      puts detail.bottom_line
+      
       
       # detail[:pros] = item.css("").text.strip
       # detail[:cons] = item.css("").text.strip
       # detail[:bottom_line] = item.css("").text.strip
     end
-    # detail
+    
   end
   
   # def print_laptops
@@ -93,7 +99,7 @@ class Scraper
   def print_laptops
     self.scrape_laptop_page
     Laptop.all.each do |item|
-     
+    puts "all #{item}" 
       if item.name
        puts "Pros: #{item.pros} "
        puts "Cons: #{item.cons} "
