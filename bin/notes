@@ -1,0 +1,17 @@
+bundle gem cli
+none
+y
+y
+cd cli
+create new repository on github
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:HuydDo/cli.git
+git push -u origin master
+
+git clone git@github.com:HuydDo/cli.git
+cd  cli
+change read me
+git add . 
+git commit – m “modified README”
+git push

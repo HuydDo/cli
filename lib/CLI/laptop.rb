@@ -1,6 +1,6 @@
 # class BestLaptops::Laptop
 class Laptop
-  attr_accessor :name, :price, :description, :url, :pros, :cons, :bottom_line
+  attr_accessor :name, :price, :description, :url, :pros, :cons, :bottom_line, :content
   
   @@all = []
   
@@ -23,6 +23,10 @@ class Laptop
     attr_hash.each do |key, value| 
       self.send(("#{key}="), value)
     end
+  end
+  
+  def content
+    @content ||= Scraper.new.scrape_content(url)
   end
   
   def self.all

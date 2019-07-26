@@ -15,6 +15,7 @@ class CLI
   def run 
     make_laptops
     list_laptops
+    add_laptop_detail
     menu
   end
   
@@ -35,6 +36,7 @@ class CLI
   def add_laptop_detail
     Laptop.all.each do |laptop|
       info = Scraper.scrape_laptop_page(laptop.url)
+      puts info
       laptop.add_laptop_info(info)
     end
   end
@@ -54,7 +56,7 @@ class CLI
       elsif input == "show"
         list_laptops
       else
-        puts "Please check your input again."
+        puts "Your input is incorrect."
       end
     end
     
@@ -77,9 +79,13 @@ class CLI
     puts = gets.strip
     
     if ["Y", "YES"].include?(input.upcase)
-      content = Laptop.
-      puts content
+      # content = scrape_laptop_page(laptop_url)
+      # content = @list.content
+      # puts content
       # puts "  Read Review: #{laptop.url}"
+      puts "Pros: #{laptop.pros}"
+      puts "Cons: #{laptop.pros}"
+      puts "Bottom Line: #{laptop.pros}"
     end
     puts "Would you like to exit or show the list again?"
     input = gets.strip
