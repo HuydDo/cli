@@ -69,9 +69,20 @@ class CLI
   
   def selected_laptop(number)
     laptop = @list[number - 1]
+    input = nil
+    
     puts "Name: #{laptop.name} - #{laptop.price}"
     puts "Description: #{laptop.description}"
-    puts "Would you like to read more review?"
+    puts "Would you like to read more?"
+    puts = gets.strip
+    
+    if ["Y", "YES"].include?(input.upcase)
+      content = Laptop.
+      puts content
       # puts "  Read Review: #{laptop.url}"
-  end  
+    end
+    puts "Would you like to exit or show the list again?"
+    input = gets.strip
+  end
+  
 end
