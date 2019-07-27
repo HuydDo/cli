@@ -13,7 +13,6 @@ class CLI
   
   def make_laptops
     laptops_arr = Scraper.scrape_laptops
-    # puts laptops_arr[0]
     Laptop.create(laptops_arr)
   end
   
@@ -25,10 +24,9 @@ class CLI
     end
   end
   
-  def add_laptop_detail
+  def add_laptop_detail(url)
     Laptop.all.each do |laptop|
-      info = Scraper.scrape_laptop_page(laptop.url)
-      puts info
+      info = Scraper.scrape_laptop_page(url)
       laptop.add_laptop_info(info)
     end
   end
@@ -42,8 +40,12 @@ class CLI
       if input.to_i > 0 and input.to_i <= @list.size
         laptop = @list[input.to_i - 1]
         
-        puts "Name: #{laptop.name} - #{laptop.price}"
+        puts "Name: #{laptop.name}"
+        puts 
+        puts laptop.price
+        puts 
         puts "Description: #{laptop.description}"
+        # puts laptop.url
         puts "Would you like to read more?"
         input = gets.strip
     
@@ -52,10 +54,12 @@ class CLI
           # content = @list.content
           # puts content
           
+          add_laptop_detail(laptop.url)
           puts "Pros: #{laptop.pros}"
           puts "Cons: #{laptop.pros}"
           puts "Bottom Line: #{laptop.pros}"
-        end
+        # else
+          end
           # puts "Would you like to exit or show the list again?"
           # input = gets.strip
         
