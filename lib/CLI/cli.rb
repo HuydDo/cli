@@ -7,7 +7,6 @@ class CLI
   def run 
     make_laptops
     list_laptops
-    # add_laptop_detail
     menu
   end
   
@@ -26,12 +25,8 @@ class CLI
   
   def add_laptop_detail(url,index)
     # Laptop.all.each do |laptop|
-    
-      # puts "index: #{index}"
       laptop = Laptop.all[index]
       info = Scraper.scrape_laptop_page(url)
-      # puts info
-      
       laptop.add_laptop_info(info)
     # end
   end
@@ -39,28 +34,28 @@ class CLI
   def menu
     input = nil
     while input != 'exit'
-      puts "Enter the number of laptop for more information. Type show to display the list. Type exit to quit. "
+      puts "Enter the number for more information. Type show to display the list. Type exit to quit. "
       input = gets.strip.downcase
       
       if input.to_i > 0 and input.to_i <= @list.size
         laptop = @list[input.to_i - 1]
-        
+        puts
         puts "Name: #{laptop.name}"
         puts 
         puts laptop.price
         puts 
-        puts "Description: #{laptop.description}"
-        # puts laptop.url
+        puts "Review: #{laptop.description}"
+        puts
         puts "Would you like to read more?"
         answer = gets.strip
     
         if ["Y", "YES"].include?(answer.upcase)
           # content = scrape_laptop_page(laptop_url)
-          # content = @list.content
+          # content = Laptop.content
           # puts content
           
-          # puts "user select number: #{input.to_i}"
           add_laptop_detail(laptop.url,input.to_i - 1)
+          puts
           puts "Pros: #{laptop.pros}"
           puts
           puts "Cons: #{laptop.cons}"
@@ -68,10 +63,9 @@ class CLI
           puts "Bottom Line: #{laptop.bottom_line}"
           puts
         # else
-          end
-          # puts "Would you like to exit or show the list again?"
-          # input = gets.strip
-        
+        #   puts "Would you like to exit or show the list again?"
+        #   input = gets.strip
+        end
         
         # selected_laptop(input.to_i)
         # laptop = @list[input.to_i - 1]
@@ -81,7 +75,7 @@ class CLI
       elsif input == "show"
         list_laptops
       else
-        # puts "Would you like to exit or show the list again?"
+        puts "Please check your input."
       end
     end
     

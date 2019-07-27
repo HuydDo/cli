@@ -25,8 +25,9 @@ class Laptop
     end
   end
   
-  def content
-    @content ||= Scraper.new.scrape_content(url)
+  def self.content
+    puts @url
+    @content ||= Scraper.new.scrape_laptop_page(@url)
   end
   
   def self.all

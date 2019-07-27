@@ -8,9 +8,7 @@ class Scraper
   def initialize(url = nil)
     @url = url
   end
-  def initialize
 
-  end
 
   # doc = Nokogiri::HTML(open("https://www.pcmag.com/roundup/255115/the-best-laptops"))
   
