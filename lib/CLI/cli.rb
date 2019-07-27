@@ -1,14 +1,6 @@
 require_relative "./scraper.rb"
 require_relative './laptop.rb'
 
-#TODO:
-# until input == 'exit'
-#   case input 
-#   when 
-#   end
-# end
-# open new page if select read more
-
 # class BestLaptops::CLI
 class CLI 
   
@@ -48,6 +40,8 @@ class CLI
       input = gets.strip.downcase
       
       if input.to_i > 0 and input.to_i <= @list.size
+        laptop = @list[input.to_i - 1]
+        
         puts "Name: #{laptop.name} - #{laptop.price}"
         puts "Description: #{laptop.description}"
         puts "Would you like to read more?"
@@ -62,11 +56,11 @@ class CLI
           puts "Cons: #{laptop.pros}"
           puts "Bottom Line: #{laptop.pros}"
         end
-        puts "Would you like to exit or show the list again?"
-        input = gets.strip
+          # puts "Would you like to exit or show the list again?"
+          # input = gets.strip
         
         
-        selected_laptop(input.to_i)
+        # selected_laptop(input.to_i)
         # laptop = @list[input.to_i - 1]
         # puts "Name: #{laptop.name} - #{laptop.price}"
         # puts "Review: #{laptop.description}"
@@ -74,7 +68,7 @@ class CLI
       elsif input == "show"
         list_laptops
       else
-        puts "Your input is incorrect."
+        puts "Would you like to exit or show the list again?"
       end
     end
     
