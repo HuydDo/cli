@@ -27,6 +27,7 @@ class CLI
   def add_laptop_detail(url)
     Laptop.all.each do |laptop|
       info = Scraper.scrape_laptop_page(url)
+    
       laptop.add_laptop_info(info)
     end
   end
