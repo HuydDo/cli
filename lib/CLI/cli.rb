@@ -24,12 +24,16 @@ class CLI
     end
   end
   
-  def add_laptop_detail(url)
-    Laptop.all.each do |laptop|
-      info = Scraper.scrape_laptop_page(url)
+  def add_laptop_detail(url,index)
+    # Laptop.all.each do |laptop|
     
+      # puts "index: #{index}"
+      laptop = Laptop.all[index]
+      info = Scraper.scrape_laptop_page(url)
+      # puts info
+      
       laptop.add_laptop_info(info)
-    end
+    # end
   end
   
   def menu
@@ -48,17 +52,21 @@ class CLI
         puts "Description: #{laptop.description}"
         # puts laptop.url
         puts "Would you like to read more?"
-        input = gets.strip
+        answer = gets.strip
     
-        if ["Y", "YES"].include?(input.upcase)
+        if ["Y", "YES"].include?(answer.upcase)
           # content = scrape_laptop_page(laptop_url)
           # content = @list.content
           # puts content
           
-          add_laptop_detail(laptop.url)
+          # puts "user select number: #{input.to_i}"
+          add_laptop_detail(laptop.url,input.to_i - 1)
           puts "Pros: #{laptop.pros}"
-          puts "Cons: #{laptop.pros}"
-          puts "Bottom Line: #{laptop.pros}"
+          puts
+          puts "Cons: #{laptop.cons}"
+          puts
+          puts "Bottom Line: #{laptop.bottom_line}"
+          puts
         # else
           end
           # puts "Would you like to exit or show the list again?"
@@ -73,7 +81,7 @@ class CLI
       elsif input == "show"
         list_laptops
       else
-        puts "Would you like to exit or show the list again?"
+        # puts "Would you like to exit or show the list again?"
       end
     end
     
