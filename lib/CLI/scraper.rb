@@ -1,6 +1,6 @@
-require_relative './laptop.rb'
-require 'nokogiri'
-require 'open-uri'
+# require_relative './laptop.rb'
+# require 'nokogiri'
+# require 'open-uri'
 
 class CLI::Scraper
 # class Scraper

@@ -26,8 +26,8 @@ class CLI::Laptop
   end
   
   def self.content
-    puts @url
-    @content ||= Scraper.new.scrape_laptop_page(@url)
+     # @content ||= Scraper.new.scrape_laptop_page(@url)
+     @content ||= CLI::Scraper.new.scrape_laptop_page(@url)
   end
   
   def self.all

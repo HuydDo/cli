@@ -12,8 +12,10 @@ class CLI::CLI
   
   def make_laptops
     # laptops_arr = Scraper.scrape_laptops
+    # Laptop.create(laptops_arr)
+    
     laptops_arr = CLI::Scraper.scrape_laptops
-    Laptop.create(laptops_arr)
+    CLI::Laptop.create(laptops_arr)
   end
   
   def list_laptops
