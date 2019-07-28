@@ -41,7 +41,8 @@ class CLI::CLI
   def menu
     input = nil
     while input != 'exit'
-      puts "Enter the number for more information. Type show to display the list. Type exit to quit. "
+      puts "Enter the number of the laptop for more information."
+      puts "Type show to display the list. Type exit to quit. "
       input = gets.strip.downcase
       
       if input.to_i > 0 and input.to_i <= @list.size
