@@ -1,8 +1,8 @@
 require_relative "./scraper.rb"
 require_relative './laptop.rb'
 
-# class BestLaptops::CLI
-class CLI 
+class CLI::CLI
+# class CLI 
   
   def run 
     make_laptops

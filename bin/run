@@ -1,8 +1,13 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/CLI/cli.rb"
+#require_relative "../lib/CLI/cli.rb"
+#CLI.new.run
 
-#BestLaptops::CLI.new.run
-CLI.new.run
+require "bundler/setup"
+require "cli"
+CLI::CLI.new.run
+
+
+
 
 
