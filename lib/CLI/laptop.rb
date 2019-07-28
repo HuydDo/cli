@@ -1,5 +1,5 @@
-# class BestLaptops::Laptop
-class Laptop
+class CLI::Laptop
+# class Laptop
   attr_accessor :name, :price, :description, :url, :pros, :cons, :bottom_line, :content
   
   @@all = []

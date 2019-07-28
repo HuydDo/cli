@@ -2,8 +2,8 @@ require_relative './laptop.rb'
 require 'nokogiri'
 require 'open-uri'
 
-# class BestLaptops::Scraper
-class Scraper
+class CLI::Scraper
+# class Scraper
   
   def initialize(url = nil)
     @url = url

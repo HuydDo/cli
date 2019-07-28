@@ -1,5 +1,5 @@
-require_relative "./scraper.rb"
-require_relative './laptop.rb'
+# require_relative "./scraper.rb"
+# require_relative './laptop.rb'
 
 class CLI::CLI
 # class CLI 
@@ -11,13 +11,15 @@ class CLI::CLI
   end
   
   def make_laptops
-    laptops_arr = Scraper.scrape_laptops
+    # laptops_arr = Scraper.scrape_laptops
+    laptops_arr = CLI::Scraper.scrape_laptops
     Laptop.create(laptops_arr)
   end
   
   def list_laptops
     puts "The Best Laptops for 2019."
-    @list = Laptop.all
+    # @list = Laptop.all
+    @list = CLI::Laptop.all
     @list.each.with_index(1) do |laptop, i|
       puts "#{i}. #{laptop.name}"
     end
@@ -25,8 +27,11 @@ class CLI::CLI
   
   def add_laptop_detail(url,index)
     # Laptop.all.each do |laptop|
-      laptop = Laptop.all[index]
-      info = Scraper.scrape_laptop_page(url)
+      # laptop = Laptop.all[index]
+      # info = Scraper.scrape_laptop_page(url)
+      
+      laptop = CLI::Laptop.all[index]
+      info = CLI::Scraper.scrape_laptop_page(url)
       laptop.add_laptop_info(info)
     # end
   end
